@@ -32,13 +32,7 @@ pipeline {
                 echo "Deloying project with maven package"
             }
         }
-            post {
-               
-                success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
-                }
-            }
+           
         }
     }
 
