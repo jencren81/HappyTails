@@ -13,7 +13,7 @@ pipeline {
              
                 git 'https://github.com/jencren81/HappyTails.git'
 
-                sh "sudo ./mvnw compile"
+                sh "./mvnw compile"
                 
                 echo 'Building project with maven compile'
 
@@ -23,7 +23,7 @@ pipeline {
         stage ('Test') {
             steps {
                 
-                sh "sudo ./mvnw test"
+                sh "./mvnw test"
                 
                 echo "Testing the project with maven test"
             }
@@ -31,7 +31,7 @@ pipeline {
         stage ('Deloy'){
             steps{
                 
-                sh "sudo ./mvnw package"
+                sh "./mvnw package"
                 
                 echo "Deloying project with maven package"
             }
