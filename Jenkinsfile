@@ -8,16 +8,16 @@ pipeline {
     }
     
     stages {
-        stage('Build') {
-            steps {
-             
+       steps {
                 git 'https://github.com/jencren81/HappyTails.git'
 
-                sh "./mvnw compile"
-                
-                echo 'Building project with maven compile'
+                script {
+                    // Specify the path to the Maven wrapper script
+                    def mavenWrapper = "${env.WORKSPACE}/mvnw"  // Update the path as needed
+                    sh "${mavenWrapper} clean compile"
+                }
 
-               
+                echo 'Building project with maven compile'
             }
         }
         stage ('Test') {
