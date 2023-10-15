@@ -13,7 +13,7 @@ pipeline {
 
                 script {
                     // Specify the path to the Maven wrapper script
-                    def mavenWrapper = "${env.WORKSPACE}/mvnw"  // Update the path as needed
+                    def mavenWrapper = "/var/lib/jenkins/workspace/Project4HT/mvnw"  // Update the path as needed
                     sh "${mavenWrapper} clean compile"
                 }
 
@@ -23,7 +23,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    def mavenWrapper = "${env.WORKSPACE}/mvnw"  // Update the path as needed
+                    def mavenWrapper = "/var/lib/jenkins/workspace/Project4HT/mvnw"  // Update the path as needed
                     sh "${mavenWrapper} test"
                 }
 
@@ -33,14 +33,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    def mavenWrapper = "${env.WORKSPACE}/mvnw"  // Update the path as needed
+                    def mavenWrapper = "/var/lib/jenkins/workspace/Project4HT/mvnw"  // Update the path as needed
                     sh "${mavenWrapper} package"
                 }
 
-                echo "Deploying project with maven package"
+                echo "Deploying the project with maven package"
             }
         }
     }
 }
-
 
