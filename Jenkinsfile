@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
              
-                git 'https://github.com/jencren81/HappyTails.git'
+                git 'https://jencren81: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@github.com/jencren81/HappyTails.git'
 
                 sh "./mvnw compile"
                 
