@@ -4,10 +4,15 @@ pipeline {
    
 
     stages {
+         stage('Checkout'){
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'gh pk', url: 'git@github.com:jencren81/HappyTails.git']])
+            }
+        }
         stage('Build') {
             steps {
              
-                git 'https://jencren81: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@github.com/jencren81/HappyTails.git'
+              
 
                 sh "mvn compile"
                 
