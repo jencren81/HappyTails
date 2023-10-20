@@ -1,9 +1,5 @@
 FROM openjdk:17
 
-RUN mkdir /app
+ADD target/HappyTails-0.0.1-SNAPTSHOT.jar
 
-COPY target/ /app
-
-WORKDIR /app
-
-CMD java -jar HappyTails-0.0.1-SNAPSHOT.jar --spring.config.name=application.properties
+ENTRYPOINT ["java", "-jar", "/HappyTails-0.0.1-SNAPTSHOT.jar"]
