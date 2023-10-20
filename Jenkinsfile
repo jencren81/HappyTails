@@ -37,6 +37,29 @@ pipeline {
                 echo "Deloying project with maven package"
             }
         }
+        
+        stage ('Build Docker Image'){
+            steps{
+                
+                sh "docker build -t jencren81/happyt_pro4_pipeline:${BUILD_NUMBER} ."
+                
+            }
+        }
+        
+        stage ('Docker Login'){
+            steps{
+                withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+                sh "docker login -u jencren81 -p ${Dockerpwd}"
+            }
+        }
+        
+        stage ('Docker Push'){
+            steps{
+                
+                sh "docker push jencren81/happyt_pro4_pipeline:${BUILD_NUMBER}"
+
+            }
+        }
             
         }
     }
